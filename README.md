@@ -4,22 +4,37 @@ This is the backend for the AI DataQuark Growth Campaign tool. It provides endpo
 
 ## Setup Instructions
 
-1.  **Activate Virtual Environment**:
-    Ensure your virtual environment is active.
+1.  **Create and Activate Virtual Environment**:
     ```bash
+    python -m venv venv
+    # On Windows:
     .\venv\Scripts\activate
+    # On macOS/Linux:
+    source venv/bin/activate
     ```
 
-2.  **Configure Google Ads API Credentials**:
-    Open the `google-ads.yaml` file located in the root of the project.
-    Replace the placeholder values with your **Production Account** credentials:
-    - `developer_token`
-    - `client_id`
-    - `client_secret`
-    - `refresh_token`
-    - `login_customer_id`
+2.  **Install Dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-3.  **Run the Server**:
+3.  **Apply Database Migrations**:
+    ```bash
+    python manage.py migrate
+    ```
+
+4.  **Configure Google Ads API Credentials**:
+    Create a file named `google-ads.yaml` in the root of the project and add the following structure. Replace the placeholders with your actual **Production Account** credentials:
+    ```yaml
+    developer_token: "INSERT_DEVELOPER_TOKEN_HERE"
+    client_id: "INSERT_OAUTH2_CLIENT_ID_HERE"
+    client_secret: "INSERT_OAUTH2_CLIENT_SECRET_HERE"
+    refresh_token: "INSERT_REFRESH_TOKEN_HERE"
+    login_customer_id: "INSERT_LOGIN_CUSTOMER_ID_HERE"
+    use_proto_plus: true
+    ```
+
+5.  **Run the Server**:
     ```bash
     python manage.py runserver
     ```
